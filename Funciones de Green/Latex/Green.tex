@@ -1,0 +1,148 @@
+\documentclass{article} %O cualquier otra clase.  
+\usepackage[T1]{fontenc}  
+\usepackage[utf8]{inputenc}  
+\usepackage[spanish]{babel}
+\usepackage{csquotes}
+\usepackage{amsmath,amssymb}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,      
+    pdftitle={Tight binding},
+   }
+\usepackage{biblatex}
+\addbibresource{Green.bib}
+\author{Luis Lucas García}
+\title{Funciones de Green}
+\date{\today}
+\newtheorem{definition}{Definición}
+\begin{document}
+\maketitle
+\begin{abstract}
+    En este documento se va a hacer una descripción de las funciones de Green siguiendo el libro de Fetter y Waleka \cite{fetter1971quantum}. Las funciones de Green, también conocidas como propagadores, nos permiten extraer información sobre el sistema. Estas funciones también aparecen a la hora de estudiar teoría cuántica de campos, es por ello que me gustaría en este abstract mencionar mis prácticas externas con el profesor Pedro Bargueño \cite{luis2025qft}, donde también hemos encontrado estos objetos en la forma del propagador de Feynman.
+\end{abstract}
+\tableofcontents
+\section{Definición}
+
+Vamos a introducir las funciones de Green (o propagador), que tiene un rol fundamental en el tratamiento de sistemas de muchas partículas.
+\begin{definition}[Función de Green de una partícula]
+    La función de Green de una partícula viene definida por la ecuación
+    \begin{equation}
+        iG_{\alpha\beta}(\vec{x}t, \vec{x}'t') = \frac{\left\langle\Psi_0|T\left(\hat{\psi}_{H\alpha}(\vec{x}t)\hat{\psi}^{\dagger}_{H\beta}(\vec{x}'t')\right)|\Psi_0\right\rangle}{\langle\Psi_0|\Psi_0\rangle}
+        \label{eq:GreenFunction}
+    \end{equation}
+    donde $|\Psi_0\rangle$ es el estado fundamental en la representación de Heisenberg del sistema interactuante, satisfaciendo $\hat{H}|\Psi_0\rangle = E|\Psi_0\rangle$ y $\hat{\psi}_{H\alpha}(\vec{x}t)$ es un operador en la representación de Heisenberg dado por:
+    \begin{equation}
+        \hat{\psi}_{H\alpha} = e^{i\frac{\hat{H}}{\hbar}t}\hat{\psi}_{\alpha}(\vec{x})e^{-i\frac{H}{\hbar}t}
+    \end{equation}
+\end{definition}
+
+En esta definición los índices $\alpha$ y $\beta$ son las componentes del operador de campo (son los mismo que vimos en segunda cuantización \cite{luis2024avq}). Estos índices pueden tomar dos valores para los fermiones de spin $\frac{1}{2}$, mientras que no hay índices para bosones de spin cero, puesto que dichos sistemas se describen por un campo de un componente. Aquí $T$ es un ordenamiento de operadores que tomará la siguiente forma:
+\begin{equation}
+    T\left(\hat{\psi}_{H\alpha}(\vec{x}t)\hat{\psi}^{\dagger}_{H\beta}(\vec{x}'t')\right) = \left\{\begin{array}{cc}
+        \hat{\psi}_{H\alpha}(\vec{x}t)\hat{\psi}^{\dagger}_{H\beta}(\vec{x}'t') & t > t' \\
+        \pm\hat{\psi}_{H\alpha}(\vec{x}'t')\hat{\psi}^{\dagger}_{H\beta}(\vec{x}t) & t' > t
+    \end{array}\right.
+\end{equation}
+
+Donde el cambio de signo sólo sucede en el caso de fermiones para la segunda ecuación. De forma general, el producto $T$ de varios operadores los ordena de derecha a izquierda en orden ascendente temporal y añade un factor $(-1)^P$ donde $P$ es el número de intercambios de operadores de fermiones respecto al orden original.
+
+De esta forma, la función de Green aparece como el valor esperado de operadores de campo. Si el hamiltoniano $\hat{H}$ es independiente del tiempo, $G$ únicamente depende de la diferencia de tiempos.
+$$
+iG_{\alpha\beta}(\vec{x}t, \vec{x}'t') = \left\{\begin{array}{cc}
+    e^{i\frac{E}{\hbar}(t-t')}\frac{\left\langle\Psi_0\left|\hat{\psi}_{\alpha}(\vec{x})e^{-i\frac{\hat{H}}{\hbar}(t-t')}\hat{\psi}^{\dagger}_{\beta}(\vec{x'})\right|\Psi_0\right\rangle}{\langle\Psi_0|\Psi_0\rangle} & t>t' \\
+    \pm e^{-i\frac{E}{\hbar}(t-t')}\frac{\left\langle\Psi_0\left|\hat{\psi}^{\dagger}_{\alpha}(\vec{x})e^{i\frac{\hat{H}}{\hbar}(t-t')}\hat{\psi}_{\beta}(\vec{x'})\right|\Psi_0\right\rangle}{\langle\Psi_0|\Psi_0\rangle} & t'>t
+\end{array}\right.
+$$
+
+\section{Relación con observables}
+
+Hay varios motivos para estudiar las funciones de Green. Para empezar, las reglas de Feynman son más sencillas para $G$. Además, aunque el valor que obtenemos en (\ref{eq:GreenFunction}) pierde información sobre el estado fundamental, aún retiene las propiedades fundamentales del observable:
+\begin{enumerate}
+    \item El valor esperado del operador de una única partícula en el estado fundamental.
+    \item La energía del estado fundamental del sistema.
+    \item El espectro de excitaciones del sistema.
+\end{enumerate}
+
+Consideremos un operador, de modo que $\hat{J} = \int d^3x \, \hat{\mathcal{J}}(\vec{x})$, donde $\hat{\mathcal{J}}(\vec{x})$ es el operador densidad en segunda cuantización, que según \cite{luis2024avq} se escribe de la siguiente manera:
+\begin{equation}
+    \hat{\mathcal{J}}(\vec{x}) = \sum_{\alpha\beta}\hat{\psi}_{\beta}^{\dagger}(\vec{x})J_{\beta\alpha}(\vec{x})\hat{\psi}_{\alpha}(\vec{x})
+\end{equation}
+
+Entonces el valor esperado en el estado fundamental viene dado por:
+$$
+\left\langle\hat{\mathcal{J}}(\vec{x})\right\rangle = \frac{\left\langle\Psi_0\left|\hat{\mathcal{J}}(\vec{x})\right|\Psi_0\right\rangle}{\langle\Psi_0|\Psi_0\rangle} = \lim_{\vec{x}'\to\vec{x}}\sum_{\alpha\beta}J_{\beta\alpha}(\vec{x})\frac{\left\langle\Psi_0\left|\hat{\psi}^{\dagger}_{\beta}(\vec{x}')\hat{\psi}_{\alpha}(\vec{x})\right|\Psi_0\right\rangle}{\langle\Psi_0|\Psi_0\rangle} \implies
+$$
+\begin{equation}
+    \implies\left\langle\hat{\mathcal{J}}(\vec{x})\right\rangle = \pm i\lim_{t'\to t^+}\lim_{\vec{x}'\to\vec{x}}tr\left(J(\vec{x})G(\vec{x}t, \vec{x'}t')\right)
+\end{equation}
+
+Aquí el operador $J_{\beta\alpha}(\vec{x})$ debe de actuar antes de que se lleve a cabo el límite $\vec{x}'\to\vec{x}$ puesto que podría contener derivadas espaciales. Además, el símbolo $t^+$ denota un tiempo infinitesimalmente más tardío a $t$, lo que asegura que los operadores de campo ocurran en el orden adecuado. Podemos entonces encontrar algunos valores esperados gracias a las funciones de Green:
+\begin{equation}
+    \left\langle\hat{n}(\vec{x})\right\rangle = \pm i \, tr \, G(\vec{x}t, \vec{x}t^+)
+\end{equation}
+\begin{equation}
+    \left\langle\hat{\vec{\sigma}}(\vec{x})\right\rangle = \pm i \, tr \left(\vec{\sigma}G(\vec{x}t, \vec{x}t^+)\right)
+\end{equation}
+\begin{equation}
+    \left\langle\hat{T}\right\rangle = \pm i\int d^3x \, \lim_{\vec{x}'\to\vec{x}}\left(-\frac{\hbar^2\nabla^2}{2m}tr \, G(\vec{x}t, \vec{x}'t^+)\right)
+\end{equation}
+
+Siguiendo un desarrollo bastante denso que aparece en la referencia \cite{fetter1971quantum} podemos encontrar el valor de la energía a partir de la función de Green, tomando el siguiente valor, el cual es esperable:
+\begin{equation}
+    E = \pm\frac{i}{2}\int d^3x\lim_{t'\to t^+}\lim_{\vec{x}'\to\vec{x}}\left(i\hbar\frac{\partial}{\partial t} - \frac{\hbar^2\nabla^2}{2m}\right)tr \, G(\vec{x}t, \vec{x'}t')
+\end{equation}
+
+Ahora bien, una forma más compacta de escribir estas ecuaciones sería usando el espacio de momentos, donde las funciones de Green pasan a ser:
+\begin{equation}
+    G_{\alpha\beta}(\vec{x}t, \vec{x}'t') = \frac{1}{(2\pi)^4}\int d^3k \, \int_{-\infty}^{\infty}d\omega \, e^{i\vec{k}\cdot(\vec{x}-\vec{x}')}e^{-i\omega(t-t')}G_{\alpha\beta}(\vec{k}, \omega)
+\end{equation}
+
+Lo cual nos permite escribir el número de partículas y la energía como:
+\begin{equation}
+    N = \pm i\frac{V}{(2\pi)^4}\lim_{\eta\to 0^+}\int d^3k \int_{-\infty}^{\infty} d\omega \, e^{i\omega\eta}tr \, G(\vec{k}, \omega)
+\end{equation}
+\begin{equation}
+    E = \pm \frac{1}{2} i\frac{V}{(2\pi)^4}\lim_{\eta\to 0^+}\int d^3k \int_{-\infty}^{\infty} d\omega \, e^{i\omega\eta}\left(\frac{\hbar^2 k^2}{2m} + \hbar\omega\right)tr \, G(\vec{k}, \omega)
+\end{equation}
+
+Estas expresiones son para sistemas uniformes, sin embargo, en muchos casos es más conveniente escribirlo de otra forma. Si escribimos el hamiltoniano como $H = H_0 + \lambda H_1$ podemos encontrar una expresión para la energía en función del parámetro tanto de forma general:
+\begin{equation}
+    E - E_0 = \pm\frac{1}{2}i\int_0^1\frac{d\lambda}{\lambda}\int d^3x \, \lim_{t'\to t^+}\lim_{\vec{x}'\to\vec{x}}\left(i\hbar\frac{\partial}{\partial t} - T(\vec{x})\right)tr \, G^{\lambda}(\vec{x}t, \vec{x}'t')
+\end{equation}
+
+Con su correspondiente expresión para un sistema uniforme:
+\begin{equation}
+    \begin{split}
+        E - E_0 = \pm i\frac{V}{2(2\pi)^4}\lim_{\eta\to 0^+}\int_0^1\frac{d\lambda}{\lambda}\int d^3k \int_{-\infty}^{\infty} d\omega \\ e^{i\omega\eta}\left(\hbar\omega - \frac{\hbar^2 k^2}{2m}\right)tr \, G^{\lambda}(\vec{k}, \omega)
+    \end{split}
+\end{equation}
+\section{Obteniendo la función de Green con el algoritmo de Lanczos}
+
+Vamos a seguir a partir del algoritmo de Lanczos que ya vimos en \cite{LuisLanczos}, para ello he usado la review de superconductores \cite{RevModPhys.66.763}, sin embargo, como la encontraba algo difícil, he recurrido a la expresión que aparece en el artículo de la referencia \cite{GreeneDiniz2024}, que es algo más simplificado.
+
+Usualmente estamos interesados en conseguir expresiones de la forma:
+$$
+I(\omega) = -\frac{1}{\pi}Im\left(\left\langle\psi_0 \left|\hat{O}^{\dagger}\frac{1}{\omega + E_0 + i\epsilon - \hat{H}}\hat{O}\right|\psi_0\right\rangle\right)
+$$
+
+Realizando un leve desarrollo y utilizando los coeficientes de Lanczos que obtuvimos, si seguimos al artículo \cite{GreeneDiniz2024} podemos encontrar la expresión de la función de Green a partir del algoritmo de Lanczos:
+\begin{equation}
+    G_{i, j}^L = \frac{n_{i, j}}{\omega + E_{GS} - a_0 - \frac{b_1^2}{\omega + E_{GS} - a_1 - \frac{b_2^2}{\omega + E_{GS} - a_2 - \ldots}}}
+\end{equation}
+
+Hay que notar que estos elementos de matriz cumplen que $G_{i, i} = G_{i, i}^L$ pero  de forma general que $G_{i, j} \neq G_{i, j}^L$. Para obtener los elementos de matriz de la función de Green externos a la diagonal en nuestro caso deberíamos de utilizar la siguiente combinación lineal:
+\begin{equation}
+    G_{i \neq j} = \frac{1}{2}\left(G_{i \neq j}^L - G_{i, i} - G_{j, j}\right)
+\end{equation}
+
+Finalmente, los operadores de número de partículas que aparecen más arriba toman la siguiente forma:
+\begin{equation}
+    \begin{array}{cc}
+        n_{i, i} = c_i^{\dagger}c_i & n_{i \neq j} = \left(c_i^{\dagger} + c_j^{\dagger}\right)\left(c_i + c_j\right)
+    \end{array}
+\end{equation}
+
+Hay que llevar cuidado al leer la referencia \cite{GreeneDiniz2024} puesto que usan una notación distinta para los operadores de creación y destrucción.
+\printbibliography
+\end{document}

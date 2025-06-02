@@ -1,0 +1,503 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{AshcroftSSP}{book}{}
+      \name{author}{2}{}{%
+        {{hash=61250c14134c39a8345b4a271c7df68e}{%
+           family={Ashcroft},
+           familyi={A\bibinitperiod},
+           given={N.W.},
+           giveni={N\bibinitperiod}}}%
+        {{hash=b5f10f77e7a1e023c7eacaca5e364c2c}{%
+           family={Mermin},
+           familyi={M\bibinitperiod},
+           given={N.D.},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Holt, Rinehart}%
+        {Winston}%
+      }
+      \strng{namehash}{f724088525104ebfbe2bb91ea281c2e7}
+      \strng{fullhash}{f724088525104ebfbe2bb91ea281c2e7}
+      \strng{bibnamehash}{f724088525104ebfbe2bb91ea281c2e7}
+      \strng{authorbibnamehash}{f724088525104ebfbe2bb91ea281c2e7}
+      \strng{authornamehash}{f724088525104ebfbe2bb91ea281c2e7}
+      \strng{authorfullhash}{f724088525104ebfbe2bb91ea281c2e7}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9780030493461}
+      \field{series}{HRW international editions}
+      \field{title}{Solid State Physics}
+      \field{year}{1976}
+      \verb{urlraw}
+      \verb https://books.google.es/books?id=FRZRAAAAMAAJ
+      \endverb
+      \verb{url}
+      \verb https://books.google.es/books?id=FRZRAAAAMAAJ
+      \endverb
+    \endentry
+    \entry{RevModPhys.66.763}{article}{}
+      \name{author}{1}{}{%
+        {{hash=35f616ffd141396b57a2a6a73be041ca}{%
+           family={Dagotto},
+           familyi={D\bibinitperiod},
+           given={Elbio},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society}%
+      }
+      \strng{namehash}{35f616ffd141396b57a2a6a73be041ca}
+      \strng{fullhash}{35f616ffd141396b57a2a6a73be041ca}
+      \strng{bibnamehash}{35f616ffd141396b57a2a6a73be041ca}
+      \strng{authorbibnamehash}{35f616ffd141396b57a2a6a73be041ca}
+      \strng{authornamehash}{35f616ffd141396b57a2a6a73be041ca}
+      \strng{authorfullhash}{35f616ffd141396b57a2a6a73be041ca}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{3}
+      \field{journaltitle}{Rev. Mod. Phys.}
+      \field{month}{7}
+      \field{title}{Correlated electrons in high-temperature superconductors}
+      \field{volume}{66}
+      \field{year}{1994}
+      \field{pages}{763\bibrangedash 840}
+      \range{pages}{78}
+      \verb{doi}
+      \verb 10.1103/RevModPhys.66.763
+      \endverb
+      \verb{urlraw}
+      \verb https://link.aps.org/doi/10.1103/RevModPhys.66.763
+      \endverb
+      \verb{url}
+      \verb https://link.aps.org/doi/10.1103/RevModPhys.66.763
+      \endverb
+    \endentry
+    \entry{fetter1971quantum}{book}{}
+      \name{author}{2}{}{%
+        {{hash=02ca09123cf3425765de0595f81c7a5a}{%
+           family={Fetter},
+           familyi={F\bibinitperiod},
+           given={A.L.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=8c7523824104aa6740ba6d09e1d16453}{%
+           family={Walecka},
+           familyi={W\bibinitperiod},
+           given={J.D.},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {McGraw-Hill}%
+      }
+      \strng{namehash}{658f1b44aa74449dc582f5e23326a0e8}
+      \strng{fullhash}{658f1b44aa74449dc582f5e23326a0e8}
+      \strng{bibnamehash}{658f1b44aa74449dc582f5e23326a0e8}
+      \strng{authorbibnamehash}{658f1b44aa74449dc582f5e23326a0e8}
+      \strng{authornamehash}{658f1b44aa74449dc582f5e23326a0e8}
+      \strng{authorfullhash}{658f1b44aa74449dc582f5e23326a0e8}
+      \field{extraname}{1}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9780070206533}
+      \field{series}{International series in pure and applied physics}
+      \field{title}{Quantum Theory of Many-particle Systems}
+      \field{year}{1971}
+      \verb{urlraw}
+      \verb https://books.google.es/books?id=tofKnQEACAAJ
+      \endverb
+      \verb{url}
+      \verb https://books.google.es/books?id=tofKnQEACAAJ
+      \endverb
+    \endentry
+    \entry{fetter2003quantum}{book}{}
+      \name{author}{2}{}{%
+        {{hash=02ca09123cf3425765de0595f81c7a5a}{%
+           family={Fetter},
+           familyi={F\bibinitperiod},
+           given={A.L.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=8c7523824104aa6740ba6d09e1d16453}{%
+           family={Walecka},
+           familyi={W\bibinitperiod},
+           given={J.D.},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Dover Publications}%
+      }
+      \strng{namehash}{658f1b44aa74449dc582f5e23326a0e8}
+      \strng{fullhash}{658f1b44aa74449dc582f5e23326a0e8}
+      \strng{bibnamehash}{658f1b44aa74449dc582f5e23326a0e8}
+      \strng{authorbibnamehash}{658f1b44aa74449dc582f5e23326a0e8}
+      \strng{authornamehash}{658f1b44aa74449dc582f5e23326a0e8}
+      \strng{authorfullhash}{658f1b44aa74449dc582f5e23326a0e8}
+      \field{extraname}{2}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9780486428277}
+      \field{series}{Dover Books on Physics}
+      \field{title}{Quantum Theory of Many-particle Systems}
+      \field{year}{2003}
+      \verb{urlraw}
+      \verb https://books.google.es/books?id=0wekf1s83b0C
+      \endverb
+      \verb{url}
+      \verb https://books.google.es/books?id=0wekf1s83b0C
+      \endverb
+    \endentry
+    \entry{alma9947259002101}{book}{}
+      \name{author}{1}{}{%
+        {{hash=570fabd2ba67269c33372809f5d0111a}{%
+           family={Fulde},
+           familyi={F\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {Berlin ;}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag}%
+      }
+      \strng{namehash}{570fabd2ba67269c33372809f5d0111a}
+      \strng{fullhash}{570fabd2ba67269c33372809f5d0111a}
+      \strng{bibnamehash}{570fabd2ba67269c33372809f5d0111a}
+      \strng{authorbibnamehash}{570fabd2ba67269c33372809f5d0111a}
+      \strng{authornamehash}{570fabd2ba67269c33372809f5d0111a}
+      \strng{authorfullhash}{570fabd2ba67269c33372809f5d0111a}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Electron correlations in molecules and solids}
+      \field{edition}{3rd ed.}
+      \field{isbn}{3540593640}
+      \field{series}{Springer series in solid-state sciences ; 100.}
+      \field{title}{Electron correlations in molecules and solids}
+      \field{year}{1995}
+      \keyw{Quantum chemistry ; Solid state chemistry}
+    \endentry
+    \entry{GreeneDiniz2024}{article}{}
+      \name{author}{8}{}{%
+        {{hash=63e932459bea95656410d3e7ab95633e}{%
+           family={Greene-Diniz},
+           familyi={G\bibinithyphendelim D\bibinitperiod},
+           given={Gabriel},
+           giveni={G\bibinitperiod}}}%
+        {{hash=c59e57937dd2a1b9ad23640a6c7cfe74}{%
+           family={Manrique},
+           familyi={M\bibinitperiod},
+           given={David\bibnamedelima Zsolt},
+           giveni={D\bibinitperiod\bibinitdelim Z\bibinitperiod}}}%
+        {{hash=fe2b26b8295ed69a58941f98d14512e5}{%
+           family={Yamamoto},
+           familyi={Y\bibinitperiod},
+           given={Kentaro},
+           giveni={K\bibinitperiod}}}%
+        {{hash=70c20e3964a97daf9c6e965f00d8600d}{%
+           family={Plekhanov},
+           familyi={P\bibinitperiod},
+           given={Evgeny},
+           giveni={E\bibinitperiod}}}%
+        {{hash=da8b841ab6a627017c71bf10c5c88d91}{%
+           family={Fitzpatrick},
+           familyi={F\bibinitperiod},
+           given={Nathan},
+           giveni={N\bibinitperiod}}}%
+        {{hash=8de34b22addf28f34bb0501cfe1c0fde}{%
+           family={Krompiec},
+           familyi={K\bibinitperiod},
+           given={Michal},
+           giveni={M\bibinitperiod}}}%
+        {{hash=6649c169d9250de8b08ccf7ec2c1f298}{%
+           family={Sakuma},
+           familyi={S\bibinitperiod},
+           given={Rei},
+           giveni={R\bibinitperiod}}}%
+        {{hash=96a79e8ae019f575ec21204611977b8c}{%
+           family={Ramo},
+           familyi={R\bibinitperiod},
+           given={David\bibnamedelima Muñoz},
+           giveni={D\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Verein zur Forderung des Open Access Publizierens in den Quantenwissenschaften}%
+      }
+      \strng{namehash}{42931d4e82cab95064adc761adcbded2}
+      \strng{fullhash}{585be11555b2f0cce00a0b7b11e216aa}
+      \strng{bibnamehash}{42931d4e82cab95064adc761adcbded2}
+      \strng{authorbibnamehash}{42931d4e82cab95064adc761adcbded2}
+      \strng{authornamehash}{42931d4e82cab95064adc761adcbded2}
+      \strng{authorfullhash}{585be11555b2f0cce00a0b7b11e216aa}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2521-327X}
+      \field{journaltitle}{Quantum}
+      \field{month}{6}
+      \field{title}{Quantum Computed Green's Functions using a Cumulant Expansion of the Lanczos Method}
+      \field{volume}{8}
+      \field{year}{2024}
+      \field{pages}{1383}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.22331/q-2024-06-20-1383
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.22331/q-2024-06-20-1383
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.22331/q-2024-06-20-1383
+      \endverb
+    \endentry
+    \entry{MielkeHubbard}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=f76a6e9105a51594b80b30aa79e48ae4}{%
+           family={Mielke},
+           familyi={M\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{f76a6e9105a51594b80b30aa79e48ae4}
+      \strng{fullhash}{f76a6e9105a51594b80b30aa79e48ae4}
+      \strng{bibnamehash}{f76a6e9105a51594b80b30aa79e48ae4}
+      \strng{authorbibnamehash}{f76a6e9105a51594b80b30aa79e48ae4}
+      \strng{authornamehash}{f76a6e9105a51594b80b30aa79e48ae4}
+      \strng{authorfullhash}{f76a6e9105a51594b80b30aa79e48ae4}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{09}
+      \field{title}{The Hubbard Model and its Properties}
+      \field{year}{2015}
+    \endentry
+    \entry{mironov2025dimerhubbardmodelexact}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=6bb401adc9d6802e7e4923565be96a11}{%
+           family={Mironov},
+           familyi={M\bibinitperiod},
+           given={Gennadiy\bibnamedelima Ivanovich},
+           giveni={G\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+      }
+      \strng{namehash}{6bb401adc9d6802e7e4923565be96a11}
+      \strng{fullhash}{6bb401adc9d6802e7e4923565be96a11}
+      \strng{bibnamehash}{6bb401adc9d6802e7e4923565be96a11}
+      \strng{authorbibnamehash}{6bb401adc9d6802e7e4923565be96a11}
+      \strng{authornamehash}{6bb401adc9d6802e7e4923565be96a11}
+      \strng{authorfullhash}{6bb401adc9d6802e7e4923565be96a11}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cond-mat.str-el}
+      \field{eprinttype}{arXiv}
+      \field{title}{Dimer in the Hubbard model. Exact and approximate solutions}
+      \field{year}{2025}
+      \verb{eprint}
+      \verb 2504.19680
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2504.19680
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2504.19680
+      \endverb
+    \endentry
+    \entry{Russenschuck:503603}{proceedings}{}
+      \name{author}{2}{}{%
+        {{hash=b645687ed8706a1ebc312ec41d34110b}{%
+           family={Russenschuck},
+           familyi={R\bibinitperiod},
+           given={Stephan},
+           giveni={S\bibinitperiod}}}%
+        {{hash=1a2a4b1ad6526892071ee35b84a6c80e}{%
+           family={Vandoni},
+           familyi={V\bibinitperiod},
+           given={Giovanna},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Geneva}%
+      }
+      \list{organization}{1}{%
+        {CERN}%
+      }
+      \list{publisher}{1}{%
+        {CERN}%
+      }
+      \strng{namehash}{6144ce06a0f5b403ce1ce221ee2565d7}
+      \strng{fullhash}{6144ce06a0f5b403ce1ce221ee2565d7}
+      \strng{bibnamehash}{6144ce06a0f5b403ce1ce221ee2565d7}
+      \strng{authorbibnamehash}{6144ce06a0f5b403ce1ce221ee2565d7}
+      \strng{authornamehash}{6144ce06a0f5b403ce1ce221ee2565d7}
+      \strng{authorfullhash}{6144ce06a0f5b403ce1ce221ee2565d7}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{CAS - CERN Accelerator School : Superconductivity and Cryogenics for Accelerators and Detectors: Erice, Italy 8 - 17 May 2002. CAS - CERN Accelerator School on Superconductivity and Cryogenics for Accelerators and Detectors}}
+      \field{year}{2004}
+      \verb{doi}
+      \verb 10.5170/CERN-2004-008
+      \endverb
+      \verb{urlraw}
+      \verb https://cds.cern.ch/record/503603
+      \endverb
+      \verb{url}
+      \verb https://cds.cern.ch/record/503603
+      \endverb
+    \endentry
+    \entry{Sakurai_Napolitano_2020}{book}{}
+      \name{author}{2}{}{%
+        {{hash=f7fe4eaf1ee9c40c20b04441f82e92e6}{%
+           family={Sakurai},
+           familyi={S\bibinitperiod},
+           given={J.\bibnamedelimi J.},
+           giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=b87d786f54d3cf33fabdda13f1df174d}{%
+           family={Napolitano},
+           familyi={N\bibinitperiod},
+           given={Jim},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{e581c5d3f07348069c1c428801961418}
+      \strng{fullhash}{e581c5d3f07348069c1c428801961418}
+      \strng{bibnamehash}{e581c5d3f07348069c1c428801961418}
+      \strng{authorbibnamehash}{e581c5d3f07348069c1c428801961418}
+      \strng{authornamehash}{e581c5d3f07348069c1c428801961418}
+      \strng{authorfullhash}{e581c5d3f07348069c1c428801961418}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{3}
+      \field{title}{Modern Quantum Mechanics}
+      \field{year}{2020}
+    \endentry
+    \entry{LibroQuantum}{book}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{hash=e40d3b3281b535bb9371fb1f91089c98}{%
+           family={Schwabl},
+           familyi={S\bibinitperiod},
+           given={Franz},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Berlin, Heidelberg: Springer Berlin Heidelberg: Imprint: Springer,}%
+      }
+      \strng{namehash}{ef9364fddccb51a737e078376c9a5c3c}
+      \strng{fullhash}{ef9364fddccb51a737e078376c9a5c3c}
+      \strng{bibnamehash}{ef9364fddccb51a737e078376c9a5c3c}
+      \strng{authorbibnamehash}{ef9364fddccb51a737e078376c9a5c3c}
+      \strng{authornamehash}{ef9364fddccb51a737e078376c9a5c3c}
+      \strng{authorfullhash}{ef9364fddccb51a737e078376c9a5c3c}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Advanced quantum mechanics}
+    \endentry
+    \entry{simon2013oxford}{book}{}
+      \name{author}{1}{}{%
+        {{hash=1a8c01286461308fd8f97c0c421d4200}{%
+           family={Simon},
+           familyi={S\bibinitperiod},
+           given={S.H.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {OUP Oxford}%
+      }
+      \strng{namehash}{1a8c01286461308fd8f97c0c421d4200}
+      \strng{fullhash}{1a8c01286461308fd8f97c0c421d4200}
+      \strng{bibnamehash}{1a8c01286461308fd8f97c0c421d4200}
+      \strng{authorbibnamehash}{1a8c01286461308fd8f97c0c421d4200}
+      \strng{authornamehash}{1a8c01286461308fd8f97c0c421d4200}
+      \strng{authorfullhash}{1a8c01286461308fd8f97c0c421d4200}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9780199680764}
+      \field{title}{The Oxford Solid State Basics}
+      \field{year}{2013}
+      \verb{urlraw}
+      \verb https://books.google.es/books?id=QI8jLeTOBAsC
+      \endverb
+      \verb{url}
+      \verb https://books.google.es/books?id=QI8jLeTOBAsC
+      \endverb
+    \endentry
+    \entry{2020Schrodinger}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=51501a85575c4dbcb4addb254de15fe4}{%
+           family={Tokmakoff},
+           familyi={T\bibinitperiod},
+           given={Andrei},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {University of Chicago}%
+      }
+      \strng{namehash}{51501a85575c4dbcb4addb254de15fe4}
+      \strng{fullhash}{51501a85575c4dbcb4addb254de15fe4}
+      \strng{bibnamehash}{51501a85575c4dbcb4addb254de15fe4}
+      \strng{authorbibnamehash}{51501a85575c4dbcb4addb254de15fe4}
+      \strng{authornamehash}{51501a85575c4dbcb4addb254de15fe4}
+      \strng{authorfullhash}{51501a85575c4dbcb4addb254de15fe4}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{12}
+      \field{note}{[Online; accessed 2024-10-16]}
+      \field{title}{Schrödinger and {Heisenberg} {Representations}}
+      \field{year}{2020}
+      \verb{urlraw}
+      \verb https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Time_Dependent_Quantum_Mechanics_and_Spectroscopy_(Tokmakoff)/03%3A__Time-Evolution_Operator/3.05%3A_Schrodinger_and_Heisenberg_Representations
+      \endverb
+      \verb{url}
+      \verb https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Time_Dependent_Quantum_Mechanics_and_Spectroscopy_(Tokmakoff)/03%3A__Time-Evolution_Operator/3.05%3A_Schrodinger_and_Heisenberg_Representations
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

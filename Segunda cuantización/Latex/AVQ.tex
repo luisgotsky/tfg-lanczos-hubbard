@@ -1,0 +1,679 @@
+%Preámbulo:  
+\documentclass{article} %O cualquier otra clase.  
+\usepackage[T1]{fontenc}  
+\usepackage[utf8]{inputenc}  
+\usepackage[spanish]{babel}  
+\usepackage{amsmath,amssymb}
+\usepackage[export]{adjustbox}
+\usepackage[center]{caption}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,      
+    pdftitle={Segunda Cuantización},
+    }
+\usepackage{graphicx}
+\usepackage{biblatex}
+\newtheorem{dem}{Demostración}[section]
+\newtheorem{prop}{Proposición}[section]
+\addbibresource{AVQ.bib}
+\graphicspath{ {./Imágenes/} }
+\author{Luis Lucas García}
+\title{Segunda cuantización - Resumen del primer capítulo de "Advanced Quantum Mechanics" de Franz Schwabl}
+\date{\today}
+%Documento
+\begin{document}
+\maketitle
+
+\begin{abstract}
+En este documento se pretende hacer un resumen para trabajar sobre el libro de 'Advanced Quantum Mechanics' \cite{LibroQuantum} con el que se pretende estudiar, sobre todo, la primera parte, dedicada a sistemas de muchas partículas. Nos centraremos en el primer capítulo centrado a la segunda cuantización.
+\end{abstract}
+
+\tableofcontents
+
+En este documento se va a desarrollar el formalismo de segunda cuantización. La naturaleza nos ha dado dos tipos de partículas, los fermiones y los bosones, caracterizados por la simetría o antisimetría de su función de onda. Los fermiones poseen un valor de spin antisimétrico mientras que los bosones lo tienen entero. La existencia de estos tipos de partículas permite la existencia de las estadísticas de Fermi-Dirac y Bose-Einstein, como ya se vio en mecánica estadística.
+
+\section{Partículas idénticas, estados de muchas partículas y simetría de permutación}
+
+\subsection{Estados y observables de partículas idénticas}
+
+Vamos a considerar un número $N$ de partículas idénticas. Introducimos una notación en la que $1, 2, \ldots$ representa a la tupla $i \equiv (x_i, \sigma_i)$, donde denotan los grados de libertad de la posición y del espin de la partícula i-ésima respectivamente.
+
+Con esta notación, el hamiltoniano de nuestro sistema es $H = H(1, 2, \ldots, N)$, que será simétrico en las variables $1, 2, \ldots, N$ puesto que una permutación de variables no afectará a la forma de esta función.
+
+De la misma manera podemos definir una función de onda $\psi (1, 2, \ldots, N)$.
+
+Definiremos el operador de permutación $\hat{P}_{ij}$ que intercambia las variables $i$ y $j$ de una función de onda, sobre la que tiene el siguiente efecto:
+
+\begin{equation}
+\hat{P}_{ij} \psi (\ldots, i, \ldots, j, \ldots) = \psi (\ldots, j, \ldots, i, \ldots)
+\end{equation}
+
+Es directo ver que $\hat{P}^2_{ij} \psi = \psi$ y, por lo tanto, los autovalores de este operador son $\pm 1$. Además, debido a la simetría del hamiltoniano se debe de cumplir $\hat{P} H = H \hat{P}$.
+
+Definimos el grupo de las permutaciones como $S_N$ que consiste de todas las posibles permutaciones de $N$ elementos y consta de $N!$ objetos en su interior. Una permutación de este grupo se puede representar como una serie de aplicaciones del operador $\hat{P}_{ij}$. Diremos que un elemento es par (impar) si es resultado de un número par (impar) de aplicaciones del operador.
+
+Por ejemplo, si tenemos 3 elementos, el grupo de permutaciones sería el siguiente, donde la primera fila son permutaciones pares, y la segunda impares.
+
+$$
+\begin{array}{ccc}
+(1, 2, 3) & (2, 1, 3) & (1, 3, 2) \\
+(3, 1, 2) & (3, 2, 1) & (2, 3, 1)
+\end{array}
+$$
+
+Algunas propiedades son:
+
+\begin{enumerate}
+\item Si $E$ es un autovalor de $\psi$ entonces se cumple que $E$ también es un autovalor de $\hat{P} \psi$. Se puede ver que como:
+
+$$
+H \psi = E \psi \implies H \hat{P} \psi = \hat{P} H \psi = E \hat{P} \psi
+$$
+
+\item Para cualquier permutación se cumple que $\langle \phi | \psi \rangle = \langle \hat{P} \phi | \hat{P} \psi \rangle$. Se puede ver con un cambio de variable como en una integral. (Ver anexo \ref{dem:PermProd})
+
+\item Definimos el operador adjunto $P^{\dagger}$ de forma usual tal que $\langle \psi | P \phi \rangle = \langle P^{\dagger} \psi | \phi \rangle$. Utilizando la propiedad anterior se puede demostrar que:
+
+$$
+\langle \psi | P \phi \rangle = \langle P^{-1} \psi | P^{-1} P \phi \rangle \implies P^{-1} = P^{\dagger}
+$$
+
+Y por lo tanto, el operador $P$ es unitario, $PP^{\dagger} = P^{\dagger} P = 1$
+
+\item Para cada operador simétrico $S$ se cumple que $[P, S] = 0$ (Ver anexo \ref{dem:PermCom}) de lo que se puede seguir que $\langle P \psi_i | S | P \psi_i \rangle = \langle \psi_i | S | \psi_i \rangle$ de lo que se sigue que los elementos de matriz de $\psi_i$ y de su permutado son idénticos.
+
+\item Si suponemos que las permutaciones de dos partículas idénticas no deben de tener consecuencias observables, no queda de otro modo que un obvservable, O, sea un operador simétrico, se puede seguir de que:
+
+$$
+\langle \psi | O | \psi \rangle = \langle P \psi | O | \psi \rangle = \langle \psi | P^{\dagger} O P | \psi \rangle \implies P^{\dagger} O P = O
+$$
+\end{enumerate}
+
+Dado que dos partículas idénticas se comportan igual para la misma interacción, todos los operadores físicos deben de ser simétricos ante permutaciones. Un estado y su permutado deben de ser indistinguibles experimentalmente.
+
+De hecho, los estados totalmente simétricos y totalmente antisimétricos juegan un importante papel:
+
+$$
+P_{ij} \psi_{\pm} (\ldots, i, \ldots, j, \ldots) = \pm \psi_{\pm} (\ldots, i, \ldots, j, \ldots)
+$$
+
+Estos estados totalmente simétricos o antisimétricos describen a los bosones y los fermiones respectivamente.
+
+\section{Estados completamente simétricos y antisimétricos}
+
+Consideremos los estados de una partícula suelta $|i\rangle : |1\rangle, |2\rangle \ldots$. Los estados de la partícula $1, 2, \ldots, \alpha, \ldots, N$ se denotan como: $|i\rangle_1, |i\rangle_2 \ldots |i\rangle_{\alpha}, \ldots, |i\rangle_N$. Estos nos permiten escribir la base del sistema de $N$ partículas:
+
+$$
+|i_1, \ldots, i_{\alpha}, \ldots, i_N \rangle = |i_1\rangle_1, \ldots, |i_{\alpha} \rangle_{\alpha}, \ldots, |i_N\rangle_N
+$$
+
+El subíndice fuera del ket identifica de qué partícula se trata y el índice en el interior del ket indica el estado en el que está dicha partícula.
+
+Suponiendo que \{$|i\rangle$\} forme un grupo ortonormal completo. Podemos definir el estado base totalmente simétrico u antisimétrico como:
+
+\begin{equation}
+S_{\pm} |i_1, i_2, \ldots, i_N \rangle = \frac{1}{\sqrt{N!}} \sum_P (\pm 1)^P P |i_1, i_2, \ldots, i_N \rangle
+\end{equation}
+
+Se construyen de una forma idéntica a como hacíamos en mecánica cuántica 2, de hecho es la misma construcción, no entrando en detalles. Sólo añadir que en el caso de los estados antisimétricos se añade multiplica con $-1$ cuando la permutación es impar.
+
+\section{Bosones}
+
+\subsection{Estados, espacios de Fock y operadores creación y destrucción}
+
+Un estado totalmente simétrico se puede caracterizar dando el número de ocupación, para que esté totalmente normalizado dicho estado. Entonces, con lo que hemos visto más arriba, un estado simétrico no estará normalizado si algún estado está ocupado por más de una partícula. Luego:
+
+\begin{equation}
+|n_1, n_2, \ldots \rangle = S_+ |i_1, i_2, \ldots, i_N \rangle \frac{1}{\sqrt{n_1 ! n_2 ! \ldots}}
+\end{equation}
+
+De alguna manera se puede interpretar $S_{\pm}$ como un operador que construye el estado simétrico o antisimétrico de un conjunto de partículas. Los números de ocupación tienen la misma interpretación que se vio en mecánica estadística y debe de cumplirse que la suma de los mismos sea el número de partículas, es decir, $\sum_i n_i = N$.
+
+Esta forma constituye un estado completamente simétrico de N partículas. Utilizando el principio de superposición podemos construir cualquier estado completamente simétrico. Este procedimiento es similar al que hacíamos en mecánica cuántica 2 para simetrizar la función de onda.
+
+A continuación combinaremos, de manera arbitraria, los espacios con $N = 0, 1, 2, \ldots$ partículas para construir el espacio de Fock, asegurándonos de que se cumplen las relaciones de completitud y de ortogonalidad:
+
+$$
+\begin{array}{cc}
+\langle n_1, n_2, \ldots | n'_1, n'_2, \ldots \rangle = \delta_{n_1, n'_1} \delta_{n_2, n'_2} \ldots & \sum_{n_1, n_2, \ldots} |n_1, n_2, \ldots \rangle \langle n_1, n_2, \ldots | = \mathbb{I}
+\end{array}
+$$
+
+Este espacio es la suma directa de los espacios sin partículas, con una partícula, con dos, etc. 
+
+Los operadores que se han considerado hasta ahora actúan únicamente en un subespacio de número de partículas fijo, por ejemplo, el momento o la posición son operadores que van del espacio de N partículas al espacio de N partículas. Definiremos entonces los operadores creador y destrucción de partículas que nos llevan de un espacio de N partículas a otro de $N \pm 1$ partículas. Nuestro operador actuara de la siguiente forma:
+
+\begin{equation}
+a_i^{\dagger} |\ldots, n_1, \ldots \rangle = \sqrt{n_i + 1} |\ldots, n_i + 1, \ldots \rangle
+\end{equation}
+
+La forma del operador de destrucción es la siguiente:
+
+\begin{equation}
+a_i |\ldots, n_i, \ldots \rangle = \sqrt{n_i} |\ldots, n_i - 1, \ldots \rangle
+\end{equation}
+
+Como los $n_i$ son los números de ocupación del estado $|i \rangle$ estos operadores varían dichos números, y cumplen las siguientes relaciones de conmutación:
+
+\begin{equation}
+\begin{array}{ccc}
+[a_i, a_j] = 0 & [a_i^{\dagger}, a_j^{\dagger}] = 0 & [a_i, a_j^{\dagger}] = \delta_{ij}
+\end{array}
+\end{equation}
+
+Gracias a estos operadores somos capaces de construir cualquier estado de N partículas a partir del estado de vacío, $|0\rangle$, se puede construir el estado general $|n_1, n_2, \ldots\rangle$ a partir de estos operadores como:
+
+\begin{equation}
+|n_1, n_2, \ldots \rangle = \frac{1}{\sqrt{n_1! n_2! \ldots}} \left(a_1^{\dagger}\right)^{n_1} \left(a_2^{\dagger}\right)^{n_2} \ldots |0\rangle
+\end{equation}
+
+\subsection{El operador número de partículas}
+
+El operador numero de partículas (que nos permite obtener el número de ocupación del estado $|i\rangle$) se define a partir de estos dos operadores que acabamos de ver como:
+
+\begin{equation}
+\hat{n}_i = a_i^{\dagger} a_i \implies \hat{n}_i |n_1, n_2, \ldots\rangle = n_i |n_1,  n_2, \ldots\rangle
+\end{equation}
+
+Y se puede construir el operador que nos devuelva el número total de partículas como $\hat{N} = \sum_i \hat{n}_i$. Es directo ver que el estado $|n_1, n_2, \ldots\rangle$ es un autoestado de ambos operadores.
+
+Suponiendo que las partículas no interactúen entre ellas, y además, que los estados $|i\rangle$ sean os autoestados del hamiltoniano de una única partícula de cada partícula con autovalor $\epsilon_i$, el hamiltoniano completo se puede escribir como:
+
+\begin{equation}
+H_0 = \sum_i \hat{n}_i\epsilon_i
+\end{equation}
+
+Queda patente entonces que los autovalores del hamiltoniano deben de ser $n_i\epsilon_i$. Las relaciones de conmutación del operador número de partículas son análogas a las del oscilador armónico (ver anexo).
+
+\subsection{Forma general de operadores}
+
+Consideremos un operador del sistema de N partículas que se construya como suma de los operadores para una sola partícula, es decir:
+
+$$
+T = t_1 + t_2 + \ldots + t_N = \sum_i t_i
+$$
+
+Recordemos de cuántica 2 la construcción de los elementos de matriz de un operador de una partícula, $t_{ij} = \langle i | t | j \rangle$ y podemos construir dicho operador como $t = \sum_{i, j} t_{ij} |i\rangle \langle j |$. Para el sistema de muchas partículas escribiremos nuestro operador como:
+
+\begin{equation}
+T = \sum_{i,j} t_{ij} \sum_{\alpha = 0}^{N} |i\rangle_{\alpha} \langle j|_{\alpha}
+\end{equation}
+
+Nuestro objetivo es escribir este operador en función de los operadores de creación y destrucción. Tomemos un par de estados, $i, j$ y calculemos su efecto en un estado arbitrario. Esto sería:
+
+$$
+\sum_{\alpha} |i\rangle_{\alpha} \langle j|_{\alpha} |\ldots, n_i, \ldots, n_j, \ldots\rangle = S_+ \frac{1}{\sqrt{n_1! n_2! \ldots}} \sum_{\alpha} |i\rangle_{\alpha} \langle j|_{\alpha} | i_1, i_2, \ldots, i_N \rangle
+$$
+
+El operador $S_+$ se puede sacar del sumatorio y poner en frente puesto que conmuta con cualquier operador simétrico. Si el estado tiene número de ocupación $n_j$ esto nos da lugar a $n_j$ términos en los que $|j\rangle$ es sustituido por $|i\rangle$. El operador $S_+$ se encargará entonces de darnos $n_j$ estados $|\ldots, n_i+1, \ldots, n_j-1, \ldots\rangle$ donde hay que tener en cuenta el cambio de la normalización. La ecuación anterior entonces nos lleva a:
+
+\begin{align*}
+n_j \sqrt{n_i+1}\frac{1}{\sqrt{n_j}} |\ldots, n_i+1, \ldots, n_j-1, \ldots\rangle = \\ = \sqrt{n_j} \sqrt{n_i+1} |\ldots, n_i+1, \ldots, n_j-1, \ldots\rangle = \\ = a_i^{\dagger} a_j |\ldots, n_i, \ldots, n_j, \ldots\rangle
+\end{align*}
+
+En el caso $i = j$ llegamos a una ecuación idéntica y para cada N:
+
+\begin{equation}
+\sum_{\alpha = 1}^N |i\rangle_{\alpha} \langle j|_{\alpha} = a_i^{\dagger} a_j
+\end{equation}
+
+Para un operador con elementos de matriz conocidos escribimos:
+
+\begin{equation}
+T =  \sum_{i, j} t_{ij} a_i^{\dagger} a_j
+\end{equation}
+
+De la misma forma, uno puede escribir un operador de dos partículas como:
+
+\begin{equation}
+F = \frac{1}{2} \sum_{i, j, k, m} \langle i, j |f^{(2)} | k, m\rangle a_i^{\dagger} a_k a_j^{\dagger} a_m
+\end{equation}
+
+\section{Fermiones}
+
+\subsection{Estados, espacio de Fock y operadores creación y destrucción}
+
+Para los estados de fermiones, uno debe de construir una función de onda antisimétrica, es decir, el operador $S_-$, que se puede representar en forma de determinante.
+
+\begin{equation}
+S_- |i_1, i_2, \ldots, i_N\rangle = \frac{1}{\sqrt{N!}} \left| \begin{array}{cccc}
+|i_1\rangle_1 & |i_1\rangle_2 & \ldots & |i_1\rangle_N \\
+\vdots & \vdots & \ddots & \vdots \\
+|i_N\rangle_1 & |i_N\rangle_2 & \ldots & |i_N\rangle_N
+\end{array} \right|
+\end{equation}
+
+Este determinante se denomina determinante de Slater y su valor es 0 cuando dos estados de una partícula son los mismos. Esto está de acuerdo con el principio de exclusión de Pauli por el que dos fermiones no pueden estar en un mismo estado.
+
+Además, esta función cumple la propiedad de ser antisimétrica ante intercambios, es decir, que:
+
+$$
+S_- |i_1, i_2, \ldots\rangle = -S_- |i_2, i_1, \ldots\rangle
+$$
+
+Querríamos escribir nuevamente el estado del sistema de muchas partículas a partir de su número de ocupación. Cabe notar que, al tratarse de fermiones, como veníamos hablando, debido al principio de exclusión de Pauli, los números de ocupación sólo pueden tomar el valor 0 y 1, dándonos el estado $|n_1, n_2, \ldots\rangle$.
+
+Al igual que hicimos con los bosones, podemos construir las relaciones que definen el espacio de Fock para los fermiones. Las relaciones que presentan son idénticas:
+
+\begin{align}
+\langle n_1, n_2, \ldots | n'_1, n'_2, \ldots\rangle = \delta_{n_1n'_1} \delta_{n_2n'_2} \ldots \\
+\sum_{n_1=0}^1 \sum_{n_2=0}^1 \ldots |n_1, n_2, \ldots\rangle\langle n_1, n_2, \ldots | = \mathbb{I}
+\end{align}
+
+Vamos a volver a introducir a los operadores de creación $a^{\dagger}_i$ de forma que el resultado de aplicar dos veces uno de estos operadores sea nulo. Además, en este caso el orden en que apliquemos los operadores será importante. Los definimos de modo que:
+
+$$
+\begin{array}{c}
+S_- |i_1, i_2, \ldots, i_N \rangle = a_{i_1}^{\dagger} a_{i_2}^{\dagger} \ldots a_{i_N}^{\dagger} |0\rangle \\
+S_- |i_2, i_1, \ldots, i_N \rangle = a_{i_2}^{\dagger} a_{i_1}^{\dagger} \ldots a_{i_N}^{\dagger} |0\rangle 
+\end{array}
+$$
+
+Puesto que estos estados son idénticos excepto en el signo, el anticonmutador es nulo, lo que implica la inexistencia de doble ocupación (basta con sustituir en el anticonmutador $i = j$:
+
+$$
+\{a_i^{\dagger}, a_j^{\dagger}\} = a_i^{\dagger}  a_j^{\dagger} + a_j^{\dagger} a_i^{\dagger} = 0 \implies \left( a_i^{\dagger} \right)^2 = 0
+$$
+
+Dados estos preliminares, podemos hacer la construcción de un estado en función de sus números de ocupación. Como estamos hablando de fermiones se debe de cumplir que $n_i = 0, 1$. Uno debe de elegir una forma de ordenar los estados, esta elección es arbitraria pero una vez se elige una forma de ordenarlos hay que ser coherente con ella hasta el final.
+
+\begin{equation}
+|n_1, n_2, \ldots\rangle = \left( a_1^{\dagger} \right)^{n_1} \left( a_2^{\dagger} \right)^{n_2} \ldots |0\rangle
+\end{equation}
+
+El efecto del operador de creación sobre un estado de fermiones es el siguiente:
+
+\begin{equation}
+a_i^{\dagger} |\ldots, n_i, \ldots\rangle = (1 - n_i) (-1)^{\sum_{j<i} n_j} | \ldots, n_i + 1, \ldots\rangle
+\end{equation}
+
+Donde el término $(1 - n_i)$ se asegura de que no haya más de una partícula en el mismo estado y el término de fase es debido a las anticonmutaciones necesarias para llevar el operador hasta la posición de la partícula sobre la que actúa. La relación adjunta es:
+
+$$
+\langle\ldots, n_i, \ldots | a_i = (1 - n_i) (-1)^{\sum_{j<i} n_j} \langle\ldots, n_i + 1, \ldots |
+$$
+
+Y podemos ver que el efecto del operador de destrucción será:
+
+\begin{equation}
+a_i | \ldots, n_i, \ldots\rangle = n_i (-1)^{\sum_{j<i} n_j} | \ldots, n_i, \ldots\rangle
+\end{equation}
+
+Del mismo modo que sucedía con los bosones, se puede ver que para fermiones el operador número viene dado por $a_i^{\dagger} a_i$. Tendremos las relaciones de anticonmutación para fermiones:
+
+\begin{equation}
+\begin{array}{ccc}
+\{ a_i, a_j \} = 0 & \{ a_i^{\dagger}, a_j^{\dagger} \} = 0 & \{ a_i, a_j^{\dagger} \} = \delta_{ij}
+\end{array}
+\end{equation}
+
+\subsection{Forma general de operadores}
+
+Para fermiones, los operadores también se pueden expresar en términos de operadores creación y destrucción. La forma es idéntica a la de los bosones. Sin embargo, se ha de prestar especial importancia al orden de los operadores de creación y destrucción. La demostración está en el libro, y tendríamos que los operadores de una y dos partículas se escriben:
+
+\begin{align}
+T = \sum_{i, j} t_{ij} a_i^{\dagger} a_j \\
+F = \frac{1}{2} \sum_{i, j, k, m} \langle i, j | f^{(2)} |k, m \rangle a_i^{\dagger} a_j^{\dagger} a_m a_k
+\end{align}
+
+De este punto en adelante, siempre que prestemos atención al orden de los operadores, podremos desarrollar la teoría de forma simultánea para bosones y fermiones.
+
+\section{Operadores de campo}
+
+\subsection{Transformación entre distintas bases}
+
+Consideremos dos bases; $\{ |i\rangle \}, \{ |\lambda\rangle\}$. Nos interesa la relación entre los operadores $a_i$ y $a_{\lambda}$.
+
+El estado $|\lambda\rangle$ se puede expandir en la base $\{ |i\rangle \}$
+
+$$
+|\lambda\rangle = \sum_i |i\rangle\langle i|\lambda\rangle
+$$
+
+El operador $a_i^{\dagger}$ crea partículas en el estado $|i\rangle$. Entonces, la superposición $\sum_i \langle i | \lambda\rangle a_i^{\dagger}$ dará una partícula en el estado $|\lambda\rangle$. Esto nos lleva a las relaciones:
+
+\begin{equation}
+\begin{array}{cc}
+a_{\lambda}^{\dagger} = \sum_i \langle i | \lambda \rangle a_i^{\dagger} & a_{\lambda} = \sum_i \langle \lambda | i \rangle a_i
+\end{array}
+\end{equation}
+
+Los autoestados de posición $| \vec{x} \rangle$ representan un caso importante; $\langle \vec{x} | i \rangle = \varphi_i (\vec{x})$. Donde $\varphi_i (\vec{x})$ es la función de onda de una sola partícula en la representación de posiciones. Los operadores de creación y destrucción correspondientes a los autoestados de posición se denominan \textbf{operadores de campo.}
+
+\subsection{Operadores de campo}
+
+Los operadores de campo se definen por:
+
+\begin{equation}
+\begin{array}{cc}
+\psi(\vec{x}) = \sum_i \varphi (\vec{x}) a_i & \psi^{\dagger} (\vec{x}) = \sum_i \varphi_i* (\vec{x}) a_i^{\dagger}
+\end{array}
+\label{eq:FieldOps}
+\end{equation}
+
+Estos operadores crean o destruyen una partícula en el autoestado de la posición $|\vec{x}\rangle$. Los operadores siguen las siguientes relaciones de conmutación, donde usamos el + para denotar el anticonmutador y - para denotar el conmutador donde el + representará el caso de fermiones y el - el de bosones:
+
+\begin{align*}
+\begin{array}{cc}
+[\psi(\vec{x}), \psi(\vec{x}')]_{\pm} = 0 & [\psi^{\dagger}(\vec{x}), \psi^{\dagger}(\vec{x}')]_{\pm} = 0
+\end{array} \\
+\begin{array}{c}
+[\psi(\vec{x}), \psi^{\dagger}(\vec{x}')]_{\pm} = \delta^{(3)} (\vec{x} - \vec{x}')
+\end{array}
+\end{align*}
+
+Podemos escribir algunos operadores en términos de los operadores de campo. Usando que para un operador $T = \sum_{i,j} a_i^{\dagger} T_{ij} a_j$. El operador de energía cinética queda:
+
+$$
+\hat{T} = \frac{\hbar^2}{2m} \int d^3 x \vec{\nabla} \psi^{\dagger} (\vec{x}) \vec{\nabla} \psi(\vec{x})
+$$
+
+El operador potencial de una partícula:
+
+$$
+\hat{U} = \int d^3x U(\vec{x}) \psi^{\dagger} (\vec{x}) \psi(\vec{x})
+$$
+
+Interacción entre dos partículas o cualquier potencial de dos partículas:
+
+$$
+\hat{V} = \int \int d^3xd^3x' V(\vec{x}, \vec{x}') \psi^{\dagger} (\vec{x}) \psi^{\dagger} (\vec{x}') \psi(\vec{x}) \psi(\vec{x}')
+$$
+
+Operador densidad de partículas:
+
+$$
+n(\vec{x}) = \psi^{\dagger} (\vec{x}) \psi(\vec{x})
+$$
+
+Operador número total de partículas:
+
+$$
+N(\vec{x}) = \int d^3x \psi^{\dagger} (\vec{x}) \psi(\vec{x})
+$$
+
+Formalmente, el operador densidad de partículas, aparece como la densidad de probabilidad de una partícula en el estado $\psi(\vec{x})$. Sin embargo esto no es una correspondencia como tal ya que la densidad de probabilidad es una función compleja y lo otro un operador. Esta correspondencia ha dado lugar al término de segunda cuantización, ya que los operadores en el formalismo de creación y destrucción se pueden obtener sustituyendo la función de onda $\psi(\vec{x})$ por el operador $\psi(\vec{x})$ en las densidades de una partícula. Esto permite inmediatamente escribir el operador corriente de densidad:
+
+$$
+\vec{j}(x) = \frac{\hbar}{2im} \left( \psi^{\dagger}(x) \vec{\nabla} \psi(x) - (\vec{\nabla} \psi^{\dagger}(x))\psi(x) \right)
+$$
+
+La energía cinética tiene una similaridad formal al valor esperado de la energía cinética de una sola partícula, donde en vez de tener la función de onda tenemos el operador de campo.
+
+\subsection{Ecuaciones de campo}
+
+Las ecuaciones de movimiento en la representación de Heisenberg para el operador de campo $\psi(x, t) = e^{i\frac{Ht}{\hbar}} \psi(x, 0) e^{-i\frac{Ht}{\hbar}}$ nos llevan al siguiente hamiltoniano:
+
+\begin{align}
+\begin{split}
+i\hbar\frac{\partial}{\partial t} \psi(x, t) = \left(-\frac{\hbar^2}{2m} \vec{\nabla}^2 + U(x) \right) \psi(x, t) + \\ + \int d^3x' \psi^{\dagger}(x', t) V(x', x) \psi(x',t) \psi(x, t)
+\end{split}
+\label{eq:SQHam}
+\end{align}
+
+Presenta la estructura de una ecuación de Schrödinger no lineal, de ahí el término de segunda cuantización. Se puede demostrar como a partir de la expresión del operador de campo se llega a este hamiltoniano. En todo caso, he dedicado un segundo anexo a entender la representación de Heisenberg puesto que no se trata en clase.
+
+La ecuación de movimiento del operador adjunto es idéntica a la del propio operador de campo pero cambiada de signo. Ambas se conocen como las ecuaciones de campo.
+
+Podemos entonces obtener la ecuación de movimiento del operador densidad:
+
+\begin{equation}
+\begin{split}
+\frac{\partial}{\partial t} n(x, t) = \left( \psi^{\dagger} \frac{\partial}{\partial t} \psi + \frac{\partial}{\partial t} \psi^{\dagger} \psi \right) = \frac{1}{i\hbar} \left( - \frac{\hbar^2}{2m} \right)\left( \psi^{\dagger} \vec{\nabla}^2 \psi - (\vec{\nabla}^2 \psi^{\dagger} ) \psi \right) = \\ = - \vec{\nabla} \cdot \vec{j} (x)
+\end{split}
+\end{equation}
+
+Lo cual no es más que la ecuación de continuidad para la densidad de número de partículas.
+
+\section{Representación de momentos}
+
+\subsection{Autoestados de momento y el hamiltoniano}
+
+La representación de momentos es particularmente útil en sistemas invariantes bajo traslaciones. Basaremos nuestras consideraciones en un volumen de normalización rectangular, de lados $L_x$, $L_y$ y $L_z$. Los autoestados de momento normalizados son entonces:
+
+\begin{equation}
+\varphi_k (\vec{x}) = \frac{e^{i \vec{k} \cdot \vec{x}}}{\sqrt{V}}
+\label{eq:WFF}
+\end{equation}
+
+Con volumen $V = L_x L_y L_z$. Si asumimos condiciones de contorno periódicas, el vector de onda estará restringido a unos valores dados por:
+
+\begin{equation}
+\vec{k} = 2\pi \left( \frac{n_x}{L_x}, \frac{n_y}{L_y}, \frac{n_z}{L_z} \right)
+\end{equation}
+
+Estas autofunciones cumplirán las condiciones de ortnormalidad $\langle \varphi_{k'} (x) | \varphi_k (x) \rangle = \delta_k^{k'}$. Para expresar el hamiltoniano en términos de operadores creación y destrucción necesitamos conocer sus elementos de matriz. Podemos ver que:
+
+$$
+\begin{array}{cc}
+\int d^3x \varphi*_{k'} (x) (- \vec{\nabla}^2) \varphi_k (x) = \delta_k^{k'} k^2 & \int d^3x \varphi*_{k'} (x) U(x) \varphi_k (x) = \frac{1}{V} U_{k'-k}
+\end{array}
+$$
+
+Cabe mencionar que los elementos de matriz del potencial de una partícula son su transformada de Fourier. Esto se ve si explicitamos las funciones de onda en la ecuación (\ref{eq:WFF}).
+
+Consideremos a continuación la transformada de Fourier y su inversa de un potencial de dos partículas o que depende de posiciones y las posiciones relativas, tendremos:
+
+$$
+\begin{array}{cc}
+V_{\vec{q}} = \int d^3 x e^{-i\vec{q} \cdot \vec{x}} V(x) & V(x) = \frac{1}{V} \sum_{\vec{q}} V_{\vec{q}} e^{i \vec{q} \cdot \vec{x}}
+\end{array}
+$$
+
+Para el elemento de matriz encontraremos entonces que:
+
+\begin{align*}
+\langle \vec{p}', \vec{k}' | V(\vec{x} - \vec{x}') | \vec{p}, \vec{k} \rangle = \frac{1}{V^2} \int \int d^3 x d^3 x' e^{-i\vec{p}' \cdot \vec{x}} e^{-i\vec{k}' \cdot \vec{x}'} V(\vec{x} - \vec{x}') e^{i\vec{k} \cdot \vec{x}} e^{i\vec{p} \cdot \vec{x}'} = \\ = \frac{1}{V^3} \sum_{\vec{q}} V_{\vec{q}} \int \int d^3 x d^3 x' e^{-i\vec{p}' \cdot \vec{x} -i\vec{k}' \cdot \vec{x}' + i\vec{k} \cdot \vec{x} + i\vec{p} \cdot \vec{x}' + i \vec{q} \cdot (\vec{x} - \vec{x}')} = \\ = \frac{1}{V} \sum_{\vec{q}} V_{\vec{q}} \delta^0_{-\vec{p}' + \vec{q} + \vec{p}} \delta^0_{-\vec{k}' + \vec{q} + \vec{k}}
+\end{align*}
+
+Escribiendo ahora el hamiltoniano usando la forma general de operadores con operadores de creación y destrucción tal y como vimos en la sección de fermiones, tendremos que en este caso el hamiltoniano es:
+
+\begin{equation}
+H = \sum_{\vec{k}} \frac{(\hbar \vec{k})^2}{2m} a_{\vec{k}}^{\dagger} a_{\vec{k}} + \frac{1}{V} \sum_{\vec{k}, \vec{k}'} U_{\vec{k}' - \vec{k}} a_{\vec{k}'}^{\dagger} + \frac{1}{2V} \sum_{\vec{q}, \vec{p}, \vec{k}} V_{\vec{q}} a^{\dagger}_{\vec{p} + \vec{q}} a^{\dagger}_{\vec{k} - \vec{q}} a_{\vec{k}} a_{\vec{p}}
+\end{equation}
+
+Los operadores de creación y destrucción de la partícula con vector de onda $\vec{k}$ cumplen las mismas relaciones de conmutación y anticonmutación que los operadores en bosones y fermiones.
+
+\subsection{Transformada de Fourier de la densidad}
+
+El resto de operadores considerados en la sección anterior se pueden escribir en la representación de momentos. Es de especial interés el operador densidad de número. La transformada de Fourier de este operador es:
+
+\begin{equation}
+\hat{n}_{\vec{q}} = \int d^3x n(\vec{x})e^{-i \vec{q} \cdot \vec{x}} = \int d^3x \psi^{\dagger} (\vec{x}) \psi (\vec{x}) e^{-i \vec{q} \cdot \vec{x}}
+\end{equation}
+
+De la ecuación (\ref{eq:FieldOps}) podemos ver que:
+
+$$
+\begin{array}{cc}
+\psi (\vec{x}) = \frac{1}{\sqrt{V}} \sum_{\vec{p}}e^{i \vec{p} \cdot \vec{x}} a_{\vec{p}} & \psi^{\dagger} (\vec{x}) = \sum_{\vec{p}} e^{-i \vec{p} \cdot \vec{x}} a^{\dagger}_{\vec{p}}
+\end{array}
+$$
+
+Lo que nos lleva a que:
+
+$$
+\hat{n}_{\vec{q}} = \int d^3x \frac{1}{V} \sum_{\vec{p}} \sum_{\vec{k}} e^{-i\vec{p}\cdot\vec{x}}a^{\dagger}_{\vec{p}}e^{i\vec{k}\cdot\vec{x}}a_{\vec{k}}e^{-i\vec{q}\cdot\vec{x}}
+$$
+
+De la relación de ortogonalidad para los operadores de campo se llega finalmente a que:
+
+\begin{equation}
+\hat{n}_{\vec{q}} = \sum_{\vec{q}} a_{\vec{p}}^{\dagger} a_{\vec{p}+\vec{q}}
+\end{equation}
+
+Lo cual es la transformada de Fourier del operador densidad en la representación de momentos. El operdor número de ocupación para el estado $|\vec{p}\rangle$ es $\hat{n}_{\vec{p}} = a^{\dagger}_{\vec{p}} a_{\vec{p}}$. Y el operador de número total de partículas es la suma sobre el vector $\vec{p}$ de todos estos operadores de número de ocupación.
+
+\subsection{La inclusión del spin}
+
+Hasta ahora no hemos considerado explícitamente el spin. Uno puede pensar que está incluido en las fórmulas anteriores como parte de un grado de libertad espacial x. Si el spin se debe de dar de forma explícita, entonces se deben de  hacer remplazos $\psi(\vec{x}) \rightarrow \psi_{\sigma}(\vec{x})$ y $a_{\vec{p}} \rightarrow a_{\vec{p}\sigma}$ y añadir la suma sobre todas las componentes z del spin. El operador densidad de número quedaría:
+
+$$
+\hat{n}_{\vec{q}} = \sum_{\vec{p}, \sigma} a^{\dagger}_{\vec{p}\sigma} a_{\vec{p}+\vec{q}\sigma}
+$$
+
+El hamiltoniano en el caso de una interacción independiente del spin es idéntico al de la expresión (\ref{eq:SQHam}) haciendo la sustitución de los operadores de campo por los nuevos considerando el spin.
+
+Para fermiones con spin $\frac{1}{2}$, los dos posibles valores de la componente z del spin $\pm\frac{\hbar}{2}$. El operador de densidad de spin:
+
+$$
+\vec{S}(\vec{x})=\sum_{\alpha=1}^N \delta(\vec{x}-\vec{x}_{\alpha}) \vec{S}_{\alpha}
+$$
+
+Y en la representación de autoestados el operador queda:
+
+\begin{equation}
+\vec{S}(\vec{x}) = \frac{\hbar}{2} \sum_{\sigma, \sigma'} \psi_{\sigma}^{\dagger}(\vec{x}) \vec{\sigma}_{\sigma \sigma'} \psi_{\sigma'}(\vec{x})
+\end{equation}
+
+Donde $\vec{\sigma}_{\sigma \sigma'}$ son los elementos de matriz de las matrices de Pauli. Las relaciones de conmutación se mantienen idénticas excepto por el término cruzado al que se añade una delta más.
+
+\begin{equation}
+\begin{array}{cc}
+[\psi_{\sigma}(\vec{x}), \psi_{\sigma'}^{\dagger}(\vec{x})]_{\pm} = \delta_{\sigma \sigma'} \delta(\vec{x} - \vec{x}') & [a_{\vec{k}\sigma}, a^{\dagger}_{\vec{k}'\sigma'}]_{\pm} = \delta_{\vec{k}\vec{k}'} \delta_{\sigma \sigma'}
+\end{array}
+\end{equation}
+
+La ecuación de movimiento no cambia para los campos más allá del cambio que mencionamos más arriba, pero sí que es interesante verla en la representación de momentos.
+
+\begin{equation}
+\begin{split}
+i\hbar\dot{a}_{\vec{k}\sigma}(t) = \frac{(\hbar\vec{k})^2}{2m}a_{\vec{k}\sigma}(t)+\frac{1}{V}\sum_{\vec{k}'}U_{\vec{k}-\vec{k}'}a_{\vec{k}'\sigma}(t)+ \\ +\frac{1}{V}\sum_{\vec{p},\vec{q},\sigma'}V_{\vec{q}}a^{\dagger}_{\vec{p}+\vec{q}\sigma'}(t)a_{\vec{p}\sigma'}(t)a_{\vec{k}+\vec{q}\sigma}(t)
+\end{split}
+\end{equation}
+
+\section{Anexo 1: Demostraciones}
+
+El proposito de este primer anexo es hacer una serie de demostraciones que, en el libro se dan por evidentes, pero no me parecieron y dejo aquí patente la demostración. Seguiremos un formato de proposición - demostración
+
+\begin{prop}
+Para cualquier permutación se cumple que $\langle \phi | \psi \rangle = \langle \hat{P} \phi | \hat{P} \psi \rangle$
+\label{dem:PermProd}
+\end{prop}
+
+\begin{dem}
+Vease que:
+
+$$
+\langle \psi | \phi \rangle = \int \psi (1, \ldots, N) \phi(1, \ldots, N) \, d1 \ldots dN
+$$
+
+\begin{align*}
+\langle P \psi | P \phi \rangle = \int P \psi( \ldots, i, \ldots, j, \ldots) P \phi ( \ldots, i, \ldots, j, \ldots) \, \ldots di \ldots dj \ldots = \\ = \int  \psi( \ldots, j, \ldots, i, \ldots)  \phi ( \ldots, j, \ldots, i, \ldots) \, \ldots di \ldots dj \ldots
+\end{align*}
+
+Tomamos el cambio de variable $i = j$ y $j = i$, de forma que el jacobiano de este cambio de variable quedaría:
+
+$$
+J = \left| \frac{\partial (i, j)}{\partial (j, i)} \right| = \left| \begin{array}{cc}
+1 & 0 \\
+0 & 1
+\end{array} \right| = 1
+$$
+
+Por lo que podemos hacer el cambio de variable sin que cambie el diferencial en nada, y por lo tanto:
+
+$$
+\langle \phi | \psi \rangle = \langle \hat{P} \phi | \hat{P} \psi \rangle
+$$
+\end{dem}
+
+\begin{prop}
+Para un operador simétrico $S$ se cumple que $[P, S] = 0$
+\label{dem:PermCom}
+\end{prop}
+
+\begin{dem}
+Consideramos una función de onda $\psi ( 1, \ldots, N)$, podremos ver que, el operador simétrico cumple $\langle x | S(y) \rangle = \langle S^{\dagger} (x) | y \rangle$. Podemos tomar entonces valores esperados.
+
+\begin{align*}
+\langle \psi | [P, S] | \psi \rangle = \langle \psi | PS | \psi \rangle - \langle \psi | SP | \psi \rangle = \\ = \langle \psi | P | S \psi \rangle - \langle S^{\dagger}\psi | P | \psi \rangle = \\ = \langle S^{\dagger}\psi | P | \psi \rangle - \langle S^{\dagger}\psi | P | \psi \rangle = 0 \iff [P, S] = 0
+\end{align*}
+
+Debido a la normalización de los estados.
+\end{dem}
+
+\section{Anexo 2: representación de Heisenberg}
+
+Este segmento es un resumen/relectura y resumen de unas notas publicadas en LibreText por el profesor Andrei Tokmakoff \cite{2020Schrodinger}. Es una sección muy condensada en la que se pretende dar alguna pincelada y llegar a la demostración de la ecuación de movimiento (\ref{eq:SQHam}).
+
+Hasta ahora, en los cursos de mecánica cuántica de la universidad hemos trabajado en la representación de Schrödinger en la que la función de onda presenta una dependencia con el tiempo. Sin embargo, la función de onda no es algo medible. La representación de Heisenberg pretende solucionar esto, dando una función de onda estática y dotando de una dependencia temporal a los operadores. Resulta más natural pensar que la posición o el momento tengan una dependencia temporal por ejemplo. Podemos escribir:
+
+$$
+\langle \hat{A}(t) \rangle = \langle \psi(t)|\hat{A}|\psi(t)\rangle = \langle\psi(0)|U^{\dagger}\hat{A}U|\psi(0)\rangle 
+$$
+
+Donde $U$ representa un operador unitario. Aquí propagamos la función de onda o autovectores como $U|\psi\rangle$. Al operador $U$ se le conoce como  el propagador temporal puesto que $|\psi(t)\rangle=U(t, t_0)|\psi(t_0)\rangle$. Un operador en la representación de Schrödinger se puede transformar a la representación de Heisenberg con el propagador temporal, siendo esto que:
+
+\begin{equation}
+\hat{A}(t) =U^{\dagger}\hat{A}U
+\label{eq:HeisenOper}
+\end{equation}
+
+Usaremos la dependencia temporal explícita para poner los operadores en la representación de Heisenberg.
+
+En la representación de Schrödinger la evolución temporal de un observable viene determinada por el teorema de Ehrenfest lo que nos lleva a una expresión de la forma:
+
+$$
+i\hbar\frac{\partial}{\partial t}\langle\hat{A}\rangle=\langle[\hat{A}, \hat{H}]\rangle
+$$
+
+Donde, como es de esperar en la representación de Schrödinger, el operador no dependerá explícitamente del tiempo (pero su valor esperado sí que puede hacerlo debido a la dependencia de la función de onda). Si conmuta con el hamiltoniano  el observable es una constante del movimiento.
+
+Como se puede ver, la función de onda de Heisenberg se relaciona con la de Schrödinger siguiendo que $|\psi_S(t)\rangle=U(t, t_0)|\psi_H(t)\rangle$ donde $U(t_0, t_0) = \mathbb{I}$ y los operadores como vimos más arriba.
+
+La evolución temporal de un operador se puede obtener derivando directamente y aplicando la regla del producto en (\ref{eq:HeisenOper}). Obtenemos lo que se denomina ecuación de movimiento de Heisenberg.
+
+\begin{equation}
+i\hbar\frac{\partial}{\partial t}\hat{A}_H=[\hat{A}, H]_H
+\end{equation}
+
+En general no existe una forma general del operador U, sin embargo, si el potencial es independiente del tiempo se puede separar la ecuación de Schrödinger en parte espacial y temporal y ver que el operador U es de la forma:
+
+$$
+U(t, t_0) = e^{-i\frac{E}{\hbar}t}
+$$
+
+Volviendo ahora al caso de la ecuación (\ref{eq:SQHam}) vamos a obtenerla. En este caso, como trabajamos en segunda cuantización, hemos hecho el cambio de $\psi$ de función de onda a operador, de este modo, por lo que hemos visto hasta ahora tendremos que:
+
+$$
+\psi(x, t) = e^{i\frac{H}{\hbar}t} \psi(x, 0) e^{-i\frac{H}{\hbar}t}
+$$
+
+Escribiendo la ecuación de movimiento de Heisenberg:
+
+$$
+i\hbar\frac{\partial}{\partial t}\psi(x, t) = -[H, \psi(x, t)] = - e^{i\frac{H}{\hbar}t} [H, \psi(x, 0)] e^{-i\frac{H}{\hbar}t}
+$$
+
+También vamos a tener en cuenta la siguiente regla de los conmutadores:
+
+$$
+[AB, C] = A[B, C] + [A, C]B
+$$
+
+El término asociado a la energía cinética es:
+
+\begin{align*}
+\frac{\hbar^2}{2m}\int d^3x' [\vec{\nabla}\psi^{\dagger}(\vec{x}') \vec{\nabla}\psi(\vec{x}'), \psi(\vec{x})] = \\ = \frac{\hbar^2}{2m}\int d^3x' \left( \vec{\nabla}\psi^{\dagger}(\vec{x}') [\vec{\nabla}\psi(\vec{x}'), \psi(\vec{x})] + [\vec{\nabla}\psi^{\dagger}(\vec{x}'), \psi(\vec{x})]\vec{\nabla}\psi(\vec{x}') \right) = \\ = \frac{\hbar^2}{2m} \int d^3 x' \left( \vec{\nabla}\psi^{\dagger}(\vec{x}') \vec{\nabla} [\psi(\vec{x}'), \psi(\vec{x})] + \vec{\nabla} [\psi^{\dagger}(\vec{x}'), \psi(\vec{x})] \vec{\nabla}\psi(\vec{x}') \right) = \\ = \frac{\hbar^2}{2m} \int d^3 x' \vec{\nabla} \delta^{(3)} (\vec{x}' - \vec{x}) \vec{\nabla} \psi(\vec{x}') = \frac{\hbar^2}{2m} \vec{\nabla}^2 \psi(\vec{x})
+\end{align*}
+
+Podemos sacar el operador nabla del conmutador debido a que el término a la derecha no depende explícitamente de $\vec{x}'$
+
+El término asociado a la energía potencial es:
+
+\begin{align*}
+\int d^3x' U(\vec{x}`)[\psi^{\dagger} (\vec{x}')\psi (\vec{x}'), \psi(\vec{x})] = \\ = \int d^3x' U(\vec{x}`) \left( \psi^{\dagger} (\vec{x}') [\psi (\vec{x}'), \psi(\vec{x})] + [\psi^{\dagger} (\vec{x}'), \psi(\vec{x})] \psi (\vec{x}') \right) = \\ = \int d^3x' U(\vec{x}`) \left( -\delta^{(3)}(\vec{x}' - \vec{x})  \psi (\vec{x}') \right) = -U(\vec{x}) \psi(\vec{x})
+\end{align*}
+
+Y el término de interacción es directo usando la misma regla. Lo dejo especificado en mis apuntes de OneNote también, pero es básicamente usar la misma regla y obtener:
+
+$$
+-\int d^3 x' \psi^{\dagger} (\vec{x}') V(\vec{x}, \vec{x}') \psi(\vec{x}') \psi(\vec{x})
+$$
+
+Sustituyendo estos términos en la ecuación de más arriba se puede despejar la ecuación de movimiento.
+
+\printbibliography
+\end{document}

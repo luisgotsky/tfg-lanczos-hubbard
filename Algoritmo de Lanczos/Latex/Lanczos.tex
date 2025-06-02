@@ -1,0 +1,160 @@
+\documentclass{article} %O cualquier otra clase.  
+\usepackage[T1]{fontenc}  
+\usepackage[utf8]{inputenc}  
+\usepackage[spanish]{babel}
+\usepackage{csquotes}
+\usepackage{amsmath,amssymb}
+\usepackage{listings}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,      
+    pdftitle={Tight binding},
+   }
+\usepackage{biblatex}
+\addbibresource{Lanczos.bib}
+\author{Luis Lucas García}
+\title{Algoritmo de Lanczos}
+\date{\today}
+\begin{document}
+\maketitle
+\begin{abstract}
+    En este documento vamos a hacer una descripción del algoritmo de Lanczos. El algoritmo de Lanczos nos permite tomar un hamiltoniano cualquiera y encontrar, a partir de una vector inicial, una base en la que el hamiltoniano sea tridiagonal. Nos vamos a basar en la descripción del modelo dada por la referencia \cite{RevModPhys.66.763}.
+\end{abstract}
+\tableofcontents
+\section{Descripción del algoritmo}
+La descripción que se muestra aquí puede encontrarse en la referencia \cite{RevModPhys.66.763}.
+
+Vamos a partir de un hamiltoniano cualquiera. En nuestro caso, vamos a tratar el hamiltoniano como una matriz, aunque más adelante lo podemos tratar mediante su expresión con operadores creación y destrucción, esto será interesante cuando queramos tratar con el modelo de Hubbard.
+
+El algoritmo de Lanczos nos permite obtener una base en la que nuestra matriz sea tridiagonal, esto facilitará mucho el trabajo a la hora de obtener los autovalores para la energía.
+
+Para comenzar, vamos a elegir un vector arbitrario $|\phi_0\rangle$ en nuestro espacio de Hillbert. Si se usa el modelo para obtener el estado fundamental del sistema, necesitaríamos un overlap entre nuestro vector $|\phi_0\rangle$ y el estado fundamental del sistema $|\psi_0\rangle$ no nulo. Si conocemos alguna información del estado fundamental podemos facilitarnos este trabajo. En cualquier otro caso, simplemente tomaremos un vector aleatorio. De esta forma, vamos a ir construyendo iterativamente los vectores de la base.
+$$
+|\phi_1\rangle = \hat{H}|\phi_0\rangle - \frac{\langle\phi_0|\hat{H}|\phi_0\rangle}{\langle\phi_0|\phi_0\rangle}|\phi_0\rangle
+$$
+
+Podemos entonces ir construyendo una base de manera iterativa, si tomamos $n = 0, 1, 2, \ldots$, tendremos que los vectores son de la forma:
+\begin{equation}
+    |\phi_{n+1}\rangle = \hat{H}|\phi_n\rangle - a_n|\phi_n\rangle - b_n^2|\phi_{n-1}\rangle
+\end{equation}
+
+Donde, los coeficientes vienen dados por las siguientes ecuaciones:
+\begin{equation}
+    \begin{array}{cc}
+        a_n = \frac{\langle\phi_n|\hat{H}|\phi_n\rangle}{\langle\phi_n|\phi_n\rangle} & b_n^2 = \frac{\langle\phi_n|\phi_n\rangle}{\langle\phi_{n-1}|\phi_{n-1}\rangle}
+    \end{array}
+\end{equation}
+
+Donde además, suplimos la condición de $b_0 = 0$, de este modo la fórmula queda completa, si definimos nuestra base de este modo, encontraremos que el hamiltoniano tridiagonal que encontramos tiene la siguiente forma:
+\begin{equation}
+    H = \left(\begin{array}{ccccc}
+        a_0 & b_1 & 0 & 0 & \ldots \\
+        b_1 & a_1 & b_2 & 0 & \ldots \\
+        0 & b_2 & a_2 & b_3 & \ldots \\
+        0 & 0 & b_3 & a_3 & \ldots \\
+        \vdots & \vdots & \vdots & \vdots & \ddots
+    \end{array}\right)
+\end{equation}
+
+Bajo estos parámetros tenemos nuestro hamiltoniano tridiagonal. Cabe notar que con esta técnica podemos conseguir información lo suficientemente precisa sobre el estado fundamental del problema con un pequeño número de iteraciones (usualmente en el orden de las 100).
+
+Sin embargo, y aun con sus ventajas, el algoritmo de Lanczos tiene unas grandes restricciones de memoria que limitan el tamaño de los clusters que podemos estudiar. Bajo estas restricciones debemos de aprovechar las simetrías de nuestro sistema para reducir la memoria que utiliza el algoritmo.
+\section{Hamiltoniano de ligadura fuerte}
+A continuación vamos a retomar el estudio con un hamiltoniano de ligadura fuerte, este hamiltoniano en forma de matriz es, podemos referenciarnos al documento anterior \cite{TBSQ}:
+\begin{equation}
+    H = \left(\begin{array}{ccccc}
+        \varepsilon_0 & t & 0 & 0 & \ldots \\
+        t & \varepsilon_0 & t & 0 & \ldots \\
+        0 & t & \varepsilon_0 & t & \ldots \\
+        0 & 0 & t & \varepsilon_0 & \ldots \\
+        \vdots & \vdots & \vdots & \vdots & \ddots
+    \end{array}\right)
+\end{equation}
+
+Donde el tamaño de la matriz va a depender del tamaño de nuestra cadena, si tenemos $N$ átomos, tendremos un hamiltoniano $N \times N$ de tamaño. De esta manera, podemos construir el operador en segunda cuantización de manera directa aplicando operadores a izquierda y derecha:
+\begin{equation}
+    \hat{H} = \left(\begin{array}{ccccc}
+        a_0^{\dagger} & a_1^{\dagger} & a_2^{\dagger} & \cdots & a_N^{\dagger}
+    \end{array}\right)\left(\begin{array}{ccccc}
+        \varepsilon_0 & t & 0 & 0 & \ldots \\
+        t & \varepsilon_0 & t & 0 & \ldots \\
+        0 & t & \varepsilon_0 & t & \ldots \\
+        0 & 0 & t & \varepsilon_0 & \ldots \\
+        \vdots & \vdots & \vdots & \vdots & \ddots
+    \end{array}\right)\left(\begin{array}{c}
+        a_0 \\
+        a_1 \\
+        a_2 \\
+        \vdots \\
+        a_N
+    \end{array}\right)
+\end{equation}
+
+En una forma más comprimida de sumatorio tendríamos lo siguiente:
+\begin{equation}
+    \hat{H} = \sum_n \varepsilon_0 a_n^{\dagger} a_n + t a_n^{\dagger}\left(a_{n-1} + a_{n+1}\right)
+\end{equation}
+
+Lo que vamos a hacer a continuación es definir una base en nuestra cadena que nos permita trabajar de forma óptima con nuestro hamiltoniano. Esta base van a ser número binarios. Imaginemos una cadena de $4$ átomos, tiene entonces $4$ posiciones. A cada posición ocupada le asignamos un $1$ y a cada posición desocupada un $0$. Por ejemplo, una base inicial del algoritmo de Lanczos puede ser $1100$, a cada base se le puede asignar un entero que será la conversión a decimal del número binario que tenemos para la base, esto nos permite almacenar más vectores utilizando menos memoria.
+
+De esta forma, nos olvidamos de las matrices, y el operador de destrucción $a_n$ actua convirtiendo el $1$ en $0$ si lo hay en la posición $n$, si tenemos $0$ simplemente devuelve un $0$.
+
+Por otro lado, el operador de creación hará lo mismo pero convirtiendo $0$ en $1$ y devolviendo un $0$ cuando en la posición $n$ haya un $1$. Así, ya podremos programar un algoritmo de Lanczos para la cadena de tight-binding en segunda cuantización.
+
+Para mantener cierta simplicidad en el algoritmo, vamos a utilizar que $\varepsilon_0 = 0$ y que $t = 1$, de esta manera nuestro algoritmo funcionará con cadenas binarias como queremos.
+
+\subsection{Algoritmo de Lanczos}
+
+A continuación vamos a aplicar el algoritmo a este hamiltoniano. Es fácil ver cómo se comportan los operadores sobre una cadena binaria de la forma $[0, 1, 1, 0, \ldots, 0, 1]$ por ejemplo. Espero que esta sección sirva para documentar las funciones del código.
+\begin{lstlisting}[language=Python]
+    def baseBuilderBinary(N, n):
+    if n == 0: return np.zeros(N)
+    if n == N: return np.ones(N)
+    newBase = np.zeros(N)
+    base = []
+    for i in range(2**N):
+        newBase = toBinaryList(int(toDecList(newBase))+1, N)
+        if np.sum(newBase) == n: base.append(newBase)
+        if len(base) == N:
+            if np.linalg.det(np.array(base).transpose()) != 0:
+                return base
+            else: del(base[-1])
+    return base
+\end{lstlisting}
+
+Esta función se encarga de construir una base para n electrones en una cadena con N posiciones. Luego podemos definir la acción del hamiltoniano sobre estas bases mediante las siguientes funciones:
+\begin{lstlisting}[language=Python]
+    def hamTBbase(vect2):
+    
+    N = len(vect2)
+    newVect = np.zeros(N)
+    for i in range(N):
+        for j in range(N):
+            vect = np.copy(vect2)
+            if abs(i - j) == 1:
+                if vect[i] == 0 and vect[j] == 1:
+                    vect[i] = 1
+                    vect[j] = 0
+                else: vect = np.zeros(N)
+                newVect += vect 
+    return newVect
+
+    def hamOnBase(H, base):
+    coords = []
+    for b in base:
+        coords.append(baseDecomposition(H(b), base))
+    return coords
+
+    def hamOnVect(coords, hamBase):
+    
+    N = len(coords)
+    newCoords = np.zeros(N)
+    for i in range(N):
+        newCoords += coords[i]*hamBase[i]
+    return newCoords
+\end{lstlisting}
+
+Hay que llevar un poco de cuidado a la hora de utilizar estas funciones puesto que hay que saber cuando estamos trabajando con coordenadas y cuando directamente con vectores o con la base. Esto es importante, el hamiltoniano actúa sobre los vectores de la base pero no sobre las coordenadas en dicha base. Tras obtener esto y aplicar Lanczos con estas funciones, obtendremos el hamiltoniano en forma de matriz tridiagonal que podemos diagonalizar tal y como queríamos.
+\printbibliography
+\end{document}

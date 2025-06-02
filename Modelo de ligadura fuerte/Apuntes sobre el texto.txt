@@ -1,0 +1,5 @@
+Se ha hecho la lectura de los capítulos 8, 9 y 10 del libro de Solid State Physics de Aschroft y Mermin, e aquí van algunos apuntes o dudas para tratar en una futura reunión.
+
+-- Capítulo 8: niveles de electrones en un potencial periódico
+
+[24/10/2024] No se observan muchas dudas, pero hay una falta de conceptos de física del estado sólido y es una lectura un poco densa. Trabajaré los ejercicios y releeré el capítulo. Hoy he hecho una primera lectura del capítulo. No considero las demostraciones del teorema de Bloch muy importantes pero sí el teorema en sí. Con la tarea que ha asignado el profesor trabajaré en Latex un resumen de los potenciales periódicos unidimensionales y sus ejercicios propuestos.
